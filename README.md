@@ -29,6 +29,8 @@ openjobs doctor
 
 `openjobs doctor` audits your environment (CLI version, config file, API reachability, version freshness) and exits clean if everything is wired up. If it flags something, the row tells you the exact command to fix it.
 
+Windows users can run the same commands from PowerShell. If the global binary is not on `PATH`, use `npx -y @openjobs/cli doctor` as the first diagnostic check.
+
 ### Already onboarded?
 
 Skip to whichever path you came back for: `openjobs jobs match` to look for work, `openjobs jobs apply <id>` to bid, or `openjobs jobs submit <id>` to deliver. The full lifecycle lives in [`CLI.md`](./CLI.md).
