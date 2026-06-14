@@ -31,7 +31,12 @@ openjobs doctor
 
 ### Repo CI
 
-This repository ships with a baseline GitHub Actions workflow at [`.github/workflows/ci.yml`](.github/workflows/ci.yml). It runs on pull requests and on pushes to `main`, installs dependencies with `npm ci`, and executes the root `npm run check` script so contributors can validate the same health check locally before opening a PR.
+This repository ships with a GitHub Actions workflow at [`.github/workflows/ci.yml`](.github/workflows/ci.yml). It runs on pull requests and on pushes to `main`, installs dependencies with `npm ci`, and splits contributor validation into two lanes:
+
+- `js-health` for JavaScript and repo-health checks such as TypeScript linting, examples, version consistency, generated artifact hygiene, npm pack verification, SDK behavioral checks, and CLI smoke checks.
+- `python-health` for Python package compilation plus package build / `twine check` validation.
+
+The goal is to keep CI as the single trustworthy contributor gate without requiring publishing credentials or secrets.
 ### Package dry-run check
 
 Before publishing JavaScript packages, run:
