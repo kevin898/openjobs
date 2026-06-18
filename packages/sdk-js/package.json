@@ -19,8 +19,8 @@
     "README.md"
   ],
   "scripts": {
-    "clean": "rm -rf dist dist-cjs docs",
-    "build": "npm run clean && tsc -p tsconfig.json && mv dist/index.js dist/index.mjs && tsc -p tsconfig.cjs.json && mv dist-cjs/index.js dist/index.cjs && rm -rf dist-cjs",
+    "clean": "node -e \"const fs=require('fs'); for (const dir of ['dist','dist-cjs','docs']) fs.rmSync(dir,{recursive:true,force:true});\"",
+    "build": "node ../../scripts/build-package.mjs sdk-js",
     "test": "node ../../scripts/check-sdk-js-tests.mjs",
     "docs": "typedoc",
     "prepublishOnly": "npm run build"

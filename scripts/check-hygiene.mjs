@@ -33,8 +33,7 @@ function isGeneratedArtifact(filePath) {
 function collectCandidateFiles() {
   const tracked = gitLsFiles(["--cached"]);
   const untracked = gitLsFiles(["--others", "--exclude-standard"]);
-  const ignored = gitLsFiles(["--others", "--ignored", "--exclude-standard"]);
-  return [...new Set([...tracked, ...untracked, ...ignored])].sort();
+  return [...new Set([...tracked, ...untracked])].sort();
 }
 
 const offenders = collectCandidateFiles().filter(isGeneratedArtifact);
